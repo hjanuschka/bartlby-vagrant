@@ -1,4 +1,6 @@
 vagrant up
 vagrant ssh
-docker build  -t "BARTLBYBOX" .
-docker run -p 8001:80 -p 8002:22 --name "bartlby01"  -d BARTLBYBOX
+sudo su
+cd /root/bartlby-docker
+docker build  -t "bartlbybox" .
+docker run -p 8001:80 -p 8002:22 --name "bartlby01"  -d bartlbybox
