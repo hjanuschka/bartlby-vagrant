@@ -41,7 +41,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    (8000..8080).each do |port|
       config.vm.network :forwarded_port, :host => port, :guest => port
     end
-
+  config.vm.provider "virtualbox" do |v|
+   v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+   v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  end
   config.vm.provision "shell", inline: $script
 
 
